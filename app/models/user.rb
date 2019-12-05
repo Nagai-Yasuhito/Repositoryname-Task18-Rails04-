@@ -2,9 +2,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
   
-  VALID_PASSWORD_REGEX = /\A[a-zA-Z0-9]+\Z/
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,32}+\z/i
 #パスワードの文字数制限を追加する
-  validates :password, length: { minimum:8 , maximum: 32 }
   
 #パスワードをアルファベット、数字の混合のみ可能にしてください
   validates :password, format: { with: VALID_PASSWORD_REGEX}
