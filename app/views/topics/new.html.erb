@@ -13,11 +13,8 @@
             <%= f.label :description %>
             <%= f.text_area :description, class: 'form-control' %>
           </div>
-<!-- Rails06 課題２-->          
-          <% if !topic.new.include?(current_user) %>
-               <%= f.submit '投稿', class: 'btn btn-black btn-block' %>
-          <% end %>
-<!-- Rails06 課題２-->
+          
+          <%= f.submit '投稿', class: 'btn btn-black btn-block' %>
 
         <% end %>
       </div>
