@@ -23,5 +23,10 @@ class TopicsController < ApplicationController
     params.require(:topic).permit(:image, :description)
   end
   
+#ログインしていない場合は投稿ボタンを非表示にする
+  def logged_in?
+    !current_user.nil?
+  end
+#ログインしていない場合は投稿ボタンを非表示にする
 end
 
