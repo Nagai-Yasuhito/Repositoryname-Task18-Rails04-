@@ -13,7 +13,7 @@ class TopicsController < ApplicationController
     if @topic.save
       redirect_to topics_path, success: '投稿に成功しました'
     else
-      flash.mow[:danger] = "投稿に失敗しました"
+      flash.now[:danger] = "投稿に失敗しました"
       render :new
     end
   end 
@@ -23,10 +23,4 @@ class TopicsController < ApplicationController
     params.require(:topic).permit(:image, :description)
   end
   
-#ログインしていない場合は投稿ボタンを非表示にする
-  def logged_in?
-    !current_user.nil?
-  end
-#ログインしていない場合は投稿ボタンを非表示にする
 end
-
