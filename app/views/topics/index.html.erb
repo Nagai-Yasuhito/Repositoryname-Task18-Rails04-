@@ -8,16 +8,17 @@
               <%= topic.user.name %>
             </h2>
             <%= image_tag topic.image.url %>
+            <!==いいね機能：ハートマークの表示、非表示の代わりに、適用されるCSSが切り替わるようにする==>            
             <% if !topic.favorite_users.include?(current_user) %>  
               <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
-            <!==いいね機能：ハートマークの表示、非表示の代わりに、適用されるCSSが切り替わるようにする==>
                 <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon-heart-iine' %>
               <% end %>
             <% else %>
-              <%= image_tag 'icons/heart-black.png',class: 'topic-index-icon-heart' %>
               <%= link_to("/favorites/#{@topic.id}/destroy", {method: "topic"}) %>
-            <!==いいね機能：ハートマークの表示、非表示の代わりに、適用されるCSSが切り替わるようにする==>  
+                <%= image_tag 'icons/heart-black.png',class: 'topic-index-icon-heart' %>
+              <% end %>
             <% end %>
+            <!==いいね機能：ハートマークの表示、非表示の代わりに、適用されるCSSが切り替わるようにする==>              
             <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
             <p class="topic-text">
               <%= topic.description %>
