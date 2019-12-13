@@ -23,4 +23,8 @@ class TopicsController < ApplicationController
     params.require(:topic).permit(:image, :description)
   end
   
+  def show
+    @topic = Topic.find_by(topic_id: topic_id)
+    @favorites_count = Favorite.where(topic_id: params[:topic_id]).count
+  end
 end
