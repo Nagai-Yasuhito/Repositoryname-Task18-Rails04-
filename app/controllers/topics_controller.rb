@@ -3,6 +3,14 @@ class TopicsController < ApplicationController
     @topics = Topic.all.includes(:favorite_users)
   end
   
+# いいねの合計数をハートマークの横に表示してください
+  def show
+    @topic = Topic.find_by(id: params[:id])
+    @user = @topic.user
+    @favorite_count = Favorite.where(topic_id: @topic.id).count
+  end
+# いいねの合計数をハートマークの横に表示してください
+  
   def new
     @topic = Topic.new
   end
@@ -21,10 +29,5 @@ class TopicsController < ApplicationController
   private
   def topic_params
     params.require(:topic).permit(:image, :description)
-  end
-  
-  def show
-    @topic = Topic.find_by(topic_id: topic_id)
-    @favorites_count = Favorite.where(topic_id: params[:topic_id]).count
   end
 end

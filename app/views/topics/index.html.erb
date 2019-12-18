@@ -12,14 +12,16 @@
             <% if !topic.favorite_users.include?(current_user) %>  
               <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
                 <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon-heart' %>
+<%#= いいねの合計数をハートマークの横に表示してください %>                
+                <%= @favorite_count %>
               <% end %>
             <% else %>
               <%= link_to favorites_path(topic_id: topic.id), method: :delete do %>
                 <%= image_tag 'icons/heart-black.png',class: 'topic-index-icon-heart-iine' %>
+                <%= @favorite_count %>
+<%#= いいねの合計数をハートマークの横に表示してください %>                
               <% end %>
             <% end %>
-            
-            <%= @favorites_count %>
             
             <%#= いいね機能：ハートマークの表示、非表示の代わりに、適用されるCSSが切り替わるようにする %>              
             <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
